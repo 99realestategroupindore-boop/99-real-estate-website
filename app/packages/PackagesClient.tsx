@@ -14,10 +14,21 @@ const MASTER_SECTIONS = [
   "Water Tanks & Waterproofing",
   "Warranty",
   "Not Included",
-];
+] as const;
+
+/* ================= TYPES ================= */
+
+type SectionKey = (typeof MASTER_SECTIONS)[number];
+
+type PackageType = {
+  name: string;
+  price: string;
+  highlight: boolean;
+  data: Record<SectionKey, string[]>;
+};
 
 /* ================= PACKAGE DATA (NO SHORTCUTS) ================= */
-const packages = [
+const packages: PackageType[] = [
   {
     name: "Standard",
     price: "₹1550",
@@ -304,6 +315,8 @@ export default function PackagesClient() {
               <div className="mt-6 space-y-4">
                 {MASTER_SECTIONS.map((section, index) => {
                   const open = openSection === index;
+  const sectionKey = section as keyof typeof pkg.data;
+
 
                   return (
                     <div
