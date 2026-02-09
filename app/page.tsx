@@ -117,7 +117,7 @@ export default function Home() {
 
 {/* ================= PROJECT SHOWCASE ================= */}
 
-<section className="bg-zinc-100 py-20 text-yellow-400">
+<section className="bg-zinc-100 py-20 text-black">
   <div className="mx-auto max-w-7xl px-6">
 
     {/* HEADER */}

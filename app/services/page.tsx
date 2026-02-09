@@ -37,7 +37,7 @@ export default function ServicesPage() {
           </p>
 
           <h1 className="mt-4 text-5xl font-extrabold uppercase md:text-6xl">
-            Comprehensive Solutions
+            Comprehensive <span className="text-yellow-400">Solutions</span>
           </h1>
 
           <div className="mx-auto mt-6 h-[3px] w-16 bg-yellow-400" />

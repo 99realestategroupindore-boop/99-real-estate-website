@@ -75,7 +75,7 @@ export default function ElevationGalleryPage() {
           </p>
 
           <h1 className="mt-4 text-4xl md:text-5xl font-extrabold uppercase">
-            Front Elevation Designs
+            Front Elevation <span className="text-yellow-400">Designs</span>
           </h1>
 
           <div className="mx-auto mt-6 h-[3px] w-16 bg-yellow-400" />

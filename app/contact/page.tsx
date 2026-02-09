@@ -202,7 +202,7 @@ export default function ContactPage() {
               </p>
 
               <a
-                href="https://wa.me/91XXXXXXXXXX"
+                href="https://wa.me/919039037606"
                 target="_blank"
                 className="mt-6 inline-flex items-center gap-3 rounded-md bg-green-500 px-6 py-3 text-sm font-semibold text-white hover:bg-green-600 transition"
               >
@@ -230,18 +230,18 @@ export default function ContactPage() {
             },
             {
               title: "Call Us",
-              content: "+91 XXXXX XXXXX",
+              content: "+91 9039037606",
               icon: "📞",
             },
             {
               title: "Email Us",
-              content: "99realestategroupindore@gmail.com",
+              content: "contact@99realestategroup.com",
               icon: "✉️",
             },
             {
               title: "Working Hours",
               content:
-                "Mon – Sat: 9:00 AM – 7:00 PM\nSunday: Closed",
+                "Mon – Sat: 10:00 AM – 7:00 PM\nSunday: Closed",
               icon: "⏰",
             },
           ].map((item) => (

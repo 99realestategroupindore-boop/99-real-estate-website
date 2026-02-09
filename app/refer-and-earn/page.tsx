@@ -77,7 +77,7 @@ export default function ReferEarnPage() {
             Refer & Earn
           </p>
           <h1 className="mt-4 text-4xl md:text-5xl font-extrabold uppercase">
-            Earn Rewards by Referring
+            Earn Rewards by <span className="text-yellow-400">Referring</span>
           </h1>
           <div className="mx-auto mt-6 h-[3px] w-16 bg-yellow-400" />
           <p className="mx-auto mt-6 max-w-2xl text-zinc-300 leading-7">

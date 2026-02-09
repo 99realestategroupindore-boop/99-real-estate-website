@@ -1,5 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
+import {
+  Youtube,
+  Facebook,
+  Instagram,
+  MessageCircle,
+} from "lucide-react";
 
 export default function Footer() {
   return (
@@ -11,8 +17,8 @@ export default function Footer() {
             src="/logo.svg"
             alt="99 Real Estate Group"
             width={180}
-            height={70}
-            className="mb-6 h-16 w-auto object-contain"
+            height={80}
+            className="flex items-center justify-center mb-2 h-28 w-auto object-contain"
           />
 
           <p className="text-zinc-400 leading-7">
@@ -61,16 +67,60 @@ export default function Footer() {
               href: "https://maps.google.com",
             },
             {
-              label: "+91 XXXXX XXXXX",
-              href: "tel:+91XXXXXXXXXX",
+              label: "+91 9039037606",
+              href: "tel:+919039037606",
             },
             {
-              label: "99realestategroupindore@gmail.com",
-              href: "mailto:99realestategroupindore@gmail.com",
+              label: "contact@99realestategroup.com",
+              href: "mailto:contactus@99realestategroup.com",
             },
           ]}
         />
       </div>
+{/* ================= SOCIAL MEDIA ================= */}
+<div className="mt-6 flex gap-4">
+
+  {/* YouTube */}
+  <a
+    href="https://www.youtube.com/channel/UCgMxLVvToetccpsIzoqnRGQ"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group rounded-full border border-zinc-700 p-3 transition hover:bg-yellow-400"
+  >
+    <Youtube className="h-5 w-5 text-zinc-400 group-hover:text-black" />
+  </a>
+
+  {/* Facebook */}
+  <a
+    href="https://www.facebook.com/profile.php?id=61586271947051/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group rounded-full border border-zinc-700 p-3 transition hover:bg-yellow-400"
+  >
+    <Facebook className="h-5 w-5 text-zinc-400 group-hover:text-black" />
+  </a>
+
+  {/* Instagram */}
+  <a
+    href="https://www.instagram.com/99realestategroup/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group rounded-full border border-zinc-700 p-3 transition hover:bg-yellow-400"
+  >
+    <Instagram className="h-5 w-5 text-zinc-400 group-hover:text-black" />
+  </a>
+
+  {/* WhatsApp */}
+  <a
+    href="https://wa.me/919039037606?text=Hello%2099%20Real%20Estate%20Group,%20I%20am%20interested%20in%20construction%20services."
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group rounded-full border border-zinc-700 p-3 transition hover:bg-yellow-400"
+  >
+    <MessageCircle className="h-5 w-5 text-zinc-400 group-hover:text-black" />
+  </a>
+
+</div>
 
       {/* ================= BOTTOM BAR ================= */}
       <div className="mx-auto mt-16 flex max-w-7xl flex-col gap-3 border-t border-white/10 px-6 pt-6 text-xs text-zinc-500 md:flex-row md:justify-between">
@@ -94,18 +144,34 @@ function FooterCol({
 }) {
   return (
     <div>
-      <h4 className="mb-5 text-lg font-semibold tracking-wide">{title}</h4>
+      <h4 className="mb-5 text-lg font-semibold tracking-wide">
+        {title}
+      </h4>
+
       <ul className="space-y-3 text-base text-zinc-400">
-        {items.map((item, index) => (
-          <li key={index}>
-            <Link
-              href={item.href}
-              className="transition hover:text-yellow-400"
-            >
-              {item.label}
-            </Link>
-          </li>
-        ))}
+        {items.map((item, index) => {
+          const safeHref =
+            item.href && item.href.trim() !== ""
+              ? item.href
+              : null;
+
+          return (
+            <li key={index}>
+              {safeHref ? (
+                <Link
+                  href={safeHref}
+                  className="transition hover:text-yellow-400"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <span className="text-zinc-500 cursor-not-allowed">
+                  {item.label}
+                </span>
+              )}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

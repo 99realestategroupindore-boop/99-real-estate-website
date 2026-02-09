@@ -58,7 +58,7 @@ const steps = [
     step: "05",
     title: "Quality Checks",
     desc: "Multiple inspections ensure durability and finish excellence.",
-    image: "/public/process/1.jpg",
+    image: "/process/1.jpg",
     points: [
       "Stage-wise inspection",
       "Checklist verification",
@@ -91,7 +91,7 @@ export default function ProcessPage() {
           Our Approach
         </p>
         <h1 className="mt-4 text-5xl font-extrabold uppercase md:text-6xl">
-          Our Process
+          Our <span className="text-yellow-400">Process</span>
         </h1>
         <div className="mx-auto mt-6 h-[3px] w-16 bg-yellow-400" />
       </section>
