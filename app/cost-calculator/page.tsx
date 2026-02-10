@@ -7,9 +7,9 @@ import Link from "next/link";
 /* ================= CONFIG ================= */
 
 const RATES = {
-  basic: 1550,
-  standard: 1850,
-  premium: 2150,
+  standard: 1550,
+  premium: 1850,
+  luxury: 2150,
 };
 
 /* ================= ANIMATIONS ================= */
@@ -24,7 +24,7 @@ export default function CostCalculatorPage() {
   const [mobile, setMobile] = useState("");
   const [area, setArea] = useState("");
   const [quality, setQuality] =
-    useState<"basic" | "standard" | "premium">("standard");
+    useState<"standard" | "premium" | "luxury">("standard");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -153,7 +153,7 @@ export default function CostCalculatorPage() {
                   Construction Quality
                 </label>
                 <div className="grid grid-cols-3 gap-4">
-                  {["basic", "standard", "premium"].map((q) => (
+                  {["Standard", "premium", "luxury"].map((q) => (
                     <button
                       key={q}
                       onClick={() => setQuality(q as any)}

@@ -181,19 +181,19 @@ export default function ReferEarnPage() {
       {[
         {
           title: "1st Referral",
-          percent: "2.00%",
+          percent: "1.50%",
           desc: "Earn when your first referral confirms their project.",
 highlight: true,
         },
         {
           title: "2nd Referral",
-          percent: "2.50%",
+          percent: "1.75%",
           desc: "Higher rewards for your continued trust.",
 highlight: true,
         },
         {
           title: "3+ Referral",
-          percent: "3.00%",
+          percent: "2.00%",
           desc: "Bigger rewards as your referrals grow.",
 highlight: true,
        
@@ -256,7 +256,7 @@ highlight: true,
               {/* LEFT IMAGE */}
               <div className="rounded-2xl flex items-center justify-center p-6">
                 <img
-                  src="https://images.unsplash.com/photo-1582407947304-fd86f028f716"
+                  src="/refer/refer.jpg"
                   alt="Refer and Earn"
                   className="h-full max-h-[520px] w-full object-cover rounded-xl"
                 />

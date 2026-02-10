@@ -54,8 +54,8 @@ export default function Home() {
             </p>
 
             <h1 className="mt-6 text-5xl font-extrabold md:text-7xl">
-              Building <br />
-              <span className="text-yellow-400">Excellence</span>
+              Build Your <br />
+              <span className="text-yellow-400">Dream Home</span>
             </h1>
 
             <p className="mt-6 max-w-lg text-zinc-300">
@@ -99,7 +99,7 @@ export default function Home() {
             </form>
 
             <p className="mt-3 text-xs text-zinc-500">
-              * We currently serve only Indore
+              * Fill Form To Get More Information
             </p>
           </motion.div>
         </div>
@@ -110,7 +110,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-6 md:grid-cols-4">
           <TrustItem icon={Briefcase} label="9+ Years Experience" />
           <TrustItem icon={ShieldCheck} label="Quality Assurance" />
-          <TrustItem icon={MapPin} label="Indore Only" />
+          <TrustItem icon={MapPin} label="Door" />
           <TrustItem icon={Star} label="98% Satisfaction" />
         </div>
       </section>
