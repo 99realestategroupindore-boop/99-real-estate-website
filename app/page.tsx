@@ -25,23 +25,68 @@ import {
   Home as HomeIcon,
 } from "lucide-react";
 
-/* ================= MAIN PAGE ================= */
-
 export default function Home() {
+  /* ================= FORM STATE ================= */
+
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    service: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/send-mail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          service: formData.service,
+          page: "Home Hero Form",
+        }),
+      });
+
+      if (res.ok) {
+        alert("Thank you! Our team will contact you shortly.");
+        setFormData({ name: "", phone: "", service: "" });
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      alert("Server error. Please try again later.");
+    }
+
+    setLoading(false);
+  };
+
+  /* ================= PAGE ================= */
+
   return (
     <main className="w-full bg-white overflow-hidden">
-
       {/* ================= HERO ================= */}
-<section
-  className="relative min-h-screen bg-cover bg-center bg-no-repeat pt-28"
-  style={{
-    backgroundImage: "url('/hero/hero-bg.jpg')",
+      <section
+        className="relative min-h-screen bg-cover bg-center bg-no-repeat pt-28"
+        style={{
+          backgroundImage: "url('/hero/hero-bg.jpg')",
         }}
       >
         <div className="absolute inset-0 bg-black/75" />
 
         <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 md:grid-cols-2 items-center">
-
           {/* LEFT CONTENT */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -60,7 +105,7 @@ export default function Home() {
 
             <p className="mt-6 max-w-lg text-zinc-300">
               Transparent pricing, quality execution, and on-time delivery
-              for modern homes in Indore.
+              for modern homes.
             </p>
 
             <Link
@@ -81,37 +126,56 @@ export default function Home() {
           >
             <h3 className="text-2xl font-bold">Get Free Consultation</h3>
             <p className="mt-2 text-sm text-zinc-600">
-              Premium construction services in Indore
+              Premium construction services
             </p>
 
-            <form className="mt-6 space-y-4">
-              <input className="w-full rounded-md border px-4 py-3" placeholder="Your Name" />
-              <input className="w-full rounded-md border px-4 py-3" placeholder="Phone Number" />
-              <select className="w-full rounded-md border px-4 py-3">
-                <option>Select Service</option>
+            <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+              <input
+                type="text"
+                name="name"
+                required
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full rounded-md border px-4 py-3"
+                placeholder="Your Name"
+              />
+
+              <input
+                type="tel"
+                name="phone"
+                required
+                value={formData.phone}
+                onChange={handleChange}
+                className="w-full rounded-md border px-4 py-3"
+                placeholder="Phone Number"
+              />
+
+              <select
+                name="service"
+                required
+                value={formData.service}
+                onChange={handleChange}
+                className="w-full rounded-md border px-4 py-3"
+              >
+                <option value="">Select Service</option>
                 <option>Home Construction</option>
                 <option>Villa Construction</option>
                 <option>Renovation</option>
               </select>
-              <button className="w-full rounded-md bg-yellow-400 py-3 font-semibold hover:bg-yellow-500 transition">
-                Request Call Back
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full rounded-md bg-yellow-400 py-3 font-semibold hover:bg-yellow-500 transition"
+              >
+                {loading ? "Sending..." : "Request Call Back"}
               </button>
             </form>
 
             <p className="mt-3 text-xs text-zinc-500">
-              * Fill Form To Get More Information
+              * Fill form to get more information
             </p>
           </motion.div>
-        </div>
-      </section>
-
-      {/* ================= TRUST STRIP ================= */}
-      <section className="bg-black py-12">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-6 md:grid-cols-4">
-          <TrustItem icon={Briefcase} label="9+ Years Experience" />
-          <TrustItem icon={ShieldCheck} label="Quality Assurance" />
-          <TrustItem icon={MapPin} label="Door" />
-          <TrustItem icon={Star} label="98% Satisfaction" />
         </div>
       </section>
 
@@ -280,7 +344,7 @@ export default function Home() {
         />
         <TrustRow
           icon={MapPin}
-          text="Strong Indore Expertise"
+          text="Strong Expertise"
           direction="right"
           delay={0.6}
         />
@@ -426,7 +490,7 @@ export default function Home() {
 
         <p className="mt-6 max-w-lg text-zinc-300 leading-relaxed">
           Get a transparent construction estimate based on your built-up area
-          and selected package. Designed specially for Indore projects.
+          and selected package.
         </p>
 
         <ul className="mt-6 space-y-3 text-sm text-zinc-200">
@@ -436,7 +500,7 @@ export default function Home() {
           </li>
           <li className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-yellow-400" />
-            Local Indore construction rates
+            Local Construction Rates
           </li>
           <li className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-yellow-400" />
@@ -473,7 +537,7 @@ export default function Home() {
         Earn Rewards by Referring Friends
       </h2>
       <p className="mx-auto mt-4 max-w-2xl text-zinc-600">
-        Know someone planning construction in Indore? Refer them to us and get
+        Know someone planning construction? Refer them to us and get
         rewarded when their project begins.
       </p>
       <div className="mx-auto mt-6 h-1 w-16 bg-yellow-400" />
@@ -495,7 +559,7 @@ export default function Home() {
         </div>
         <h3 className="text-lg font-semibold">Refer Your Friend</h3>
         <p className="mt-3 text-sm text-zinc-600">
-          Share your friend’s details who is planning construction in Indore.
+          Share your friend’s details who is planning construction.
         </p>
       </motion.div>
 
@@ -545,7 +609,7 @@ export default function Home() {
       </Link>
 
       <p className="mt-4 text-xs text-zinc-500">
-        * Valid only for projects within Indore
+        * Term & Conditions Applied
       </p>
     </div>
 
