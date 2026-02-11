@@ -130,7 +130,7 @@ const prev = () => {
     <main className="bg-white">
 
       {/* ================= HERO ================= */}
-      <section className="bg-black py-32 text-center text-white">
+      <section className="bg-black py-16 md:py-32 text-center text-white">
         <motion.div initial="hidden" animate="visible" variants={fadeUp}>
           <p className="text-xs tracking-[0.3em] text-zinc-400 uppercase">
             Client Feedback
@@ -143,13 +143,13 @@ const prev = () => {
       </section>
 
       {/* ================= FEATURED TESTIMONIAL ================= */}
-      <section className="py-28 flex justify-center">
+      <section className="py-16 md:py-28 px-4 flex justify-center">
         <motion.div
           key={active}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="relative max-w-3xl rounded-2xl bg-gradient-to-br from-black to-zinc-900 p-10 text-white shadow-2xl"
+          className="relative w-full max-w-3xl rounded-2xl bg-gradient-to-br from-black to-zinc-900 p-6 sm:p-8 md:p-10 text-white shadow-2xl"
         >
           <div className="flex items-center gap-4">
             <div className="h-12 w-12 rounded-full bg-yellow-400 text-black flex items-center justify-center font-bold">
@@ -209,8 +209,8 @@ const prev = () => {
       </section>
 
       {/* ================= TESTIMONIAL GRID ================= */}
-      <section className="bg-zinc-50 py-28">
-        <div className="mx-auto grid max-w-7xl gap-8 px-6 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="bg-zinc-50 py-16 md:py-28">
+        <div className="mx-amx-auto grid max-w-7xl gap-6 px-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t, i) => (
             <motion.div
               key={i}
@@ -236,7 +236,7 @@ const prev = () => {
       </section>
 
       {/* ================= OUR CLIENTS ================= */}
-      <section className="py-28">
+      <section className="py-16 md:py-28">
         <div className="text-center">
           <p className="text-xs tracking-[0.3em] text-zinc-400 uppercase">
             Trusted By
@@ -247,7 +247,7 @@ const prev = () => {
           <div className="mx-auto mt-4 h-[3px] w-16 bg-yellow-400" />
         </div>
 
-        <div className="mx-auto mt-16 grid max-w-5xl grid-cols-2 gap-6 px-6 sm:grid-cols-3 lg:grid-cols-4">
+        <div className="mx-auto mt-12 grid max-w-5xl grid-cols-2 gap-4 px-6 sm:grid-cols-3 lg:grid-cols-4">
           {clients.map((c) => (
             <div
               key={c}

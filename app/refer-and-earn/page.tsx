@@ -161,7 +161,7 @@ export default function ReferEarnPage() {
 </section>
 
       {/* ================= REFERRAL SLABS ================= */}
-<section className="py-24 bg-white">
+<section className="py-16 md:py-24 bg-white overflow-x-hidden">
   <div className="mx-auto max-w-7xl px-6">
 
     {/* HEADING */}
