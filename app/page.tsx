@@ -140,15 +140,23 @@ export default function Home() {
                 placeholder="Your Name"
               />
 
-              <input
-                type="tel"
-                name="phone"
-                required
-                value={formData.phone}
-                onChange={handleChange}
-                className="w-full rounded-md border px-4 py-3"
-                placeholder="Phone Number"
-              />
+<input
+  type="tel"
+  name="phone"
+  required
+  inputMode="numeric"
+  pattern="[0-9]{10}"
+  maxLength={10}
+  value={formData.phone}
+  onChange={(e) => {
+    const value = e.target.value.replace(/\D/g, "");
+    if (value.length <= 10) {
+      setFormData({ ...formData, phone: value });
+    }
+  }}
+  className="w-full rounded-md border px-4 py-3"
+  placeholder="10 Digit Mobile Number"
+/>
 
               <select
                 name="service"
@@ -158,9 +166,10 @@ export default function Home() {
                 className="w-full rounded-md border px-4 py-3"
               >
                 <option value="">Select Service</option>
-                <option>Home Construction</option>
-                <option>Villa Construction</option>
-                <option>Renovation</option>
+                <option>Residential Construction</option>
+                <option>Commercial Construction</option>
+                <option>Turnkey Projects</option>
+                <option>Structural Work</option>
               </select>
 
               <button
@@ -452,7 +461,7 @@ export default function Home() {
   </div>
 </section>
 
-{/* ================= MINI COST CALCULATOR (VIDEO BG) ================= */}
+{/* ================= COST CALCULATOR CTA (VIDEO BG) ================= */}
 <section className="relative overflow-hidden py-28">
 
   {/* BACKGROUND VIDEO */}
@@ -466,7 +475,7 @@ export default function Home() {
   />
 
   {/* DARK OVERLAY */}
-  <div className="absolute inset-0 bg-black/70" />
+  <div className="absolute inset-0 bg-black/75" />
 
   {/* CONTENT */}
   <div className="relative z-10 mx-auto max-w-7xl px-6">
@@ -480,17 +489,18 @@ export default function Home() {
         viewport={{ once: true }}
         className="text-white"
       >
-        <p className="text-xs tracking-[0.3em] text-zinc-300">
+        <p className="text-xs tracking-[0.3em] text-zinc-300 uppercase">
           COST CALCULATOR
         </p>
 
         <h2 className="mt-4 text-4xl font-bold md:text-5xl">
-          Estimate Your <span className="text-yellow-400">Construction Cost</span>
+          Instantly Estimate Your
+          <span className="text-yellow-400"> Construction Cost</span>
         </h2>
 
         <p className="mt-6 max-w-lg text-zinc-300 leading-relaxed">
-          Get a transparent construction estimate based on your built-up area
-          and selected package.
+          Use our smart cost calculator to get accurate pricing based on
+          your built-up area, location, and selected package.
         </p>
 
         <ul className="mt-6 space-y-3 text-sm text-zinc-200">
@@ -500,24 +510,57 @@ export default function Home() {
           </li>
           <li className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-yellow-400" />
-            Local Construction Rates
+            Local construction rates
           </li>
           <li className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-yellow-400" />
-            No hidden costs
+            100% transparent estimate
           </li>
         </ul>
+
+        {/* SINGLE CTA */}
+        <Link
+          href="/cost-calculator"
+          className="mt-10 inline-block rounded-md bg-yellow-400 px-10 py-4 font-semibold text-black transition hover:bg-yellow-500"
+        >
+          CALCULATE YOUR COST →
+        </Link>
+
+        <p className="mt-4 text-xs text-zinc-400">
+          Takes less than 30 seconds • No obligation
+        </p>
       </motion.div>
 
-      {/* RIGHT MINI CALCULATOR */}
+      {/* RIGHT SIDE INFO CARD (NO BUTTON) */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="rounded-2xl bg-white p-8 shadow-2xl"
+        className="rounded-2xl border border-white/20 bg-white/10 p-10 backdrop-blur-lg text-white shadow-2xl"
       >
-        <MiniCalculator />
+        <h3 className="text-2xl font-bold uppercase text-yellow-400">
+          What Our Calculator Considers
+        </h3>
+
+        <ul className="mt-8 space-y-4 text-sm text-zinc-200">
+          <li className="flex justify-between border-b border-white/20 pb-2">
+            <span>Built-up Area</span>
+            <span className="text-yellow-400">✔</span>
+          </li>
+          <li className="flex justify-between border-b border-white/20 pb-2">
+            <span>Package Selection</span>
+            <span className="text-yellow-400">✔</span>
+          </li>
+          <li className="flex justify-between border-b border-white/20 pb-2">
+            <span>Location Factor</span>
+            <span className="text-yellow-400">✔</span>
+          </li>
+          <li className="flex justify-between">
+            <span>Material Standards</span>
+            <span className="text-yellow-400">✔</span>
+          </li>
+        </ul>
       </motion.div>
 
     </div>

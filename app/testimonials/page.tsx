@@ -114,6 +114,17 @@ const clients = [
 
 export default function TestimonialsPage() {
   const [active, setActive] = useState(0);
+const next = () => {
+  setActive((prev) =>
+    prev === featuredTestimonials.length - 1 ? 0 : prev + 1
+  );
+};
+
+const prev = () => {
+  setActive((prev) =>
+    prev === 0 ? featuredTestimonials.length - 1 : prev - 1
+  );
+};
 
   return (
     <main className="bg-white">
@@ -178,6 +189,22 @@ export default function TestimonialsPage() {
               />
             ))}
           </div>
+{/* LEFT ARROW */}
+<button
+  onClick={prev}
+  className="absolute left-1.5 top-1/2 -translate-y-1/2 rounded-full p-3 backdrop-blur transition hover:bg-yellow-400 hover:text-black"
+>
+  ‹
+</button>
+
+{/* RIGHT ARROW */}
+<button
+  onClick={next}
+  className="absolute right-1.5 top-1/2 -translate-y-1/2 rounded-full p-3 backdrop-blur transition hover:bg-yellow-400 hover:text-black"
+>
+  ›
+</button>
+
         </motion.div>
       </section>
 

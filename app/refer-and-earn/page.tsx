@@ -271,40 +271,69 @@ highlight: true,
                     </h3>
                     <div className="mt-3 h-[3px] w-12 bg-yellow-400" />
 
-                    {/* FRIEND DETAILS */}
-                    <div className="mt-8">
-                      <p className="mb-4 font-semibold">Friend’s Details</p>
-                      <input
-                        className="mb-4 w-full rounded-md border px-4 py-3"
-                        placeholder="Friend's Name"
-                        onChange={(e) => setFriendName(e.target.value)}
-                      />
-                      <input
-                        className="mb-4 w-full rounded-md border px-4 py-3"
-                        placeholder="Friend's Phone Number"
-                        onChange={(e) => setFriendPhone(e.target.value)}
-                      />
-                      <input
-                        className="w-full rounded-md border px-4 py-3"
-                        placeholder="City / Project Type (optional)"
-                        onChange={(e) => setCity(e.target.value)}
-                      />
-                    </div>
+{/* FRIEND DETAILS */}
+<div className="mt-8">
+  <p className="mb-4 font-semibold">Friend’s Details</p>
 
-                    {/* YOUR DETAILS */}
-                    <div className="mt-8">
-                      <p className="mb-4 font-semibold">Your Details</p>
-                      <input
-                        className="mb-4 w-full rounded-md border px-4 py-3"
-                        placeholder="Your Name"
-                        onChange={(e) => setYourName(e.target.value)}
-                      />
-                      <input
-                        className="w-full rounded-md border px-4 py-3"
-                        placeholder="Your Phone Number"
-                        onChange={(e) => setYourPhone(e.target.value)}
-                      />
-                    </div>
+  <input
+    required
+    className="mb-4 w-full rounded-md border border-zinc-300 px-4 py-3 focus:border-yellow-400 focus:outline-none"
+    placeholder="Friend's Name *"
+    onChange={(e) => setFriendName(e.target.value)}
+  />
+
+  <input
+    type="tel"
+    required
+    inputMode="numeric"
+    pattern="[6-9][0-9]{9}"
+    maxLength={10}
+    value={friendPhone}
+    onChange={(e) => {
+      const value = e.target.value.replace(/\D/g, "");
+      if (value.length <= 10) {
+        setFriendPhone(value);
+      }
+    }}
+    placeholder="Friend's 10 Digit Mobile Number *"
+    className="mb-4 w-full rounded-md border border-zinc-300 px-4 py-3 focus:border-yellow-400 focus:outline-none"
+  />
+
+  <input
+    className="w-full rounded-md border border-zinc-300 px-4 py-3 focus:border-yellow-400 focus:outline-none"
+    placeholder="City / Project Type (Optional)"
+    onChange={(e) => setCity(e.target.value)}
+  />
+</div>
+
+{/* YOUR DETAILS */}
+<div className="mt-8">
+  <p className="mb-4 font-semibold">Your Details</p>
+
+  <input
+    required
+    className="mb-4 w-full rounded-md border border-zinc-300 px-4 py-3 focus:border-yellow-400 focus:outline-none"
+    placeholder="Your Name *"
+    onChange={(e) => setYourName(e.target.value)}
+  />
+
+  <input
+    type="tel"
+    required
+    inputMode="numeric"
+    pattern="[6-9][0-9]{9}"
+    maxLength={10}
+    value={yourPhone}
+    onChange={(e) => {
+      const value = e.target.value.replace(/\D/g, "");
+      if (value.length <= 10) {
+        setYourPhone(value);
+      }
+    }}
+    placeholder="Your 10 Digit Mobile Number *"
+    className="w-full rounded-md border border-zinc-300 px-4 py-3 focus:border-yellow-400 focus:outline-none"
+  />
+</div>
 
                     <button
                       onClick={handleSubmit}

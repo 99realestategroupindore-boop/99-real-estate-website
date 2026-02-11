@@ -276,11 +276,11 @@ export default function PackagesClient() {
   return (
     <main className="bg-white">
       {/* HERO */}
-      <section className="bg-black py-32 text-center text-white">
+      <section className="bg-black py-16 md:py-32 text-center text-white px-6">
         <p className="text-xs tracking-[0.35em] text-zinc-400 uppercase">
           Transparent Pricing
         </p>
-        <h1 className="mt-6 text-5xl font-extrabold uppercase md:text-6xl">
+        <h1 className="mt-6 text-3xl sm:text-4xl md:text-6xl font-extrabold uppercase leading-tight">
           Construction <span className="text-yellow-400">Packages</span>
         </h1>
         <div className="mx-auto mt-6 h-1 w-20 bg-yellow-400" />
@@ -288,11 +288,11 @@ export default function PackagesClient() {
 
       {/* PACKAGES */}
       <section className="py-24">
-        <div className="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-3">
+        <div className="mx-auto grid max-w-7xl gap-8 px-6 grid-cols-1 md:grid-cols-3">
           {packages.map((pkg) => (
             <div
               key={pkg.name}
-              className={`relative rounded-2xl border p-8 ${
+              className={`relative rounded-2xl border p-6 md:p-8 ${
                 pkg.highlight
                   ? "border-yellow-400 ring-2 ring-yellow-400"
                   : "border-zinc-200"
@@ -305,9 +305,9 @@ export default function PackagesClient() {
                 </div>
               )}
 
-              <h3 className="text-2xl font-extrabold uppercase">{pkg.name}</h3>
+              <h3 className="text-xl sm:text-2xl font-extrabold uppercase">{pkg.name}</h3>
 
-              <p className="mt-4 text-4xl font-bold">
+              <p className="mt-4 text-3xl sm:text-4xl font-bold break-words">
                 {pkg.price}
                 <span className="text-sm text-zinc-500"> / sq.ft</span>
               </p>
@@ -327,7 +327,7 @@ export default function PackagesClient() {
                         onClick={() =>
                           setOpenSection(open ? null : index)
                         }
-                        className="flex w-full items-center justify-between p-4 font-semibold"
+                        className="flex w-full items-center justify-between p-4 text-sm sm:text-base font-semibold text-left"
                       >
                         {section}
                         <span
@@ -341,10 +341,10 @@ export default function PackagesClient() {
 
                       <div
                         className={`overflow-hidden transition-all duration-300 ${
-                          open ? "max-h-[800px] px-4 pb-4" : "max-h-0"
+                          open ? "max-h-[2000px] px-4 pb-4" : "max-h-0"
                         }`}
                       >
-                        <ul className="list-disc space-y-2 pl-5 text-sm text-zinc-600">
+                        <ul className="list-disc space-y-2 pl-5 text-sm sm:text-base text-zinc-600 break-words">
                           {pkg.data[section].map((item, i) => (
                             <li key={i}>{item}</li>
                           ))}
@@ -360,14 +360,14 @@ export default function PackagesClient() {
       </section>
 
 {/* ================= CTA ================= */}
-<section className="pb-28">
+<section className="pb-16 md:pb-28 px-6">
   <div className="mx-auto max-w-7xl px-6">
     <div className="flex flex-col items-center justify-center gap-6 sm:flex-row">
 
       {/* CONTACT CTA */}
       <a
         href="/contact"
-        className="rounded-md bg-black px-10 py-4 text-sm font-semibold text-white transition hover:bg-zinc-800"
+        className="w-full sm:w-auto text-center rounded-md bg-black px-8 py-4 text-sm font-semibold text-white transition hover:bg-zinc-800"
       >
         Get Free Consultation →
       </a>

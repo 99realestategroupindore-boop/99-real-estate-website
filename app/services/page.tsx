@@ -22,10 +22,10 @@ const fadeRight = {
 
 export default function ServicesPage() {
   return (
-    <main className="w-full bg-white">
+    <main className="bg-white">
 
       {/* ================= HERO ================= */}
-      <section className="relative bg-black py-32 text-center text-white">
+      <section className="relative bg-black py-16 md:py-32 text-center text-white">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -36,7 +36,7 @@ export default function ServicesPage() {
             Our Services
           </p>
 
-          <h1 className="mt-4 text-5xl font-extrabold uppercase md:text-6xl">
+          <h1 className="mt-4 text-3xl sm:text-4xl md:text-6xl font-extrabold uppercase leading-tight">
             Comprehensive <span className="text-yellow-400">Solutions</span>
           </h1>
 
@@ -45,7 +45,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ================= SERVICES LIST ================= */}
-      <section className="py-28">
+      <section className="py-16 md:py-28">
         <div className="mx-auto max-w-7xl space-y-32 px-6">
 
           <ServiceRow
@@ -148,7 +148,7 @@ function ServiceRow({
   const imageAnim = reverse ? fadeLeft : fadeRight;
 
   return (
-    <div className="grid items-center gap-14 md:grid-cols-2">
+    <div className="grid items-center gap-10 md:gap-14 md:grid-cols-2">
 
       {/* IMAGE */}
       <motion.div
@@ -162,7 +162,7 @@ function ServiceRow({
         <motion.div
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.4 }}
-          className="relative h-[380px] w-full overflow-hidden rounded-2xl shadow-lg"
+          className="relative h-[240px] sm:h-[300px] md:h-[380px] w-full overflow-hidden rounded-2xl shadow-lg"
         >
           <img
             src={image}
@@ -181,7 +181,7 @@ function ServiceRow({
         transition={{ duration: 0.8 }}
         className={reverse ? "md:order-2" : "md:order-1"}
       >
-        <h2 className="text-3xl font-semibold uppercase">{title}</h2>
+        <h2 className="text-2xl sm:text-3xl font-semibold uppercase leading-snug">{title}</h2>
         <div className="mt-3 h-[3px] w-12 bg-yellow-400" />
 
         <p className="mt-6 text-zinc-600">{desc}</p>

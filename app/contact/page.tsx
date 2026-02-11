@@ -131,13 +131,23 @@ export default function ContactPage() {
               </div>
 
               <div className="grid gap-6 sm:grid-cols-2">
-                <input
-                  required
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder="Phone *"
-                  className="w-full rounded-md border border-zinc-300 px-4 py-3 text-sm focus:border-yellow-400 focus:outline-none"
-                />
+<input
+  type="tel"
+  name="phone"
+  required
+  inputMode="numeric"
+  pattern="[0-9]{10}"
+  maxLength={10}
+  value={phone}
+  onChange={(e) => {
+    const value = e.target.value.replace(/\D/g, "");
+    if (value.length <= 10) {
+      setPhone(value);
+    }
+  }}
+  placeholder="10 Digit Mobile Number *"
+  className="w-full rounded-md border border-zinc-300 px-4 py-3 text-sm focus:border-yellow-400 focus:outline-none"
+/>
                 <select
                   required
                   value={service}

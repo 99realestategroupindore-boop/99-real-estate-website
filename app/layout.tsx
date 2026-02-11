@@ -19,11 +19,62 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-/* ================= METADATA ================= */
+/* ================= GLOBAL SEO ================= */
+
+const siteUrl = "https://www.99realestategroup.com";
 
 export const metadata: Metadata = {
-  title: "99 Real Estate Group",
-  description: "Premium construction & real estate development",
+  metadataBase: new URL(siteUrl),
+
+  title: {
+    default: "99 Real Estate Group | Premium Construction Services",
+    template: "%s | 99 Real Estate Group",
+  },
+
+  description:
+    "99 Real Estate Group offers transparent construction packages, cost calculator, structural warranty, and premium home building services across India.",
+
+  keywords: [
+    "construction company",
+    "house construction",
+    "home building services",
+    "construction cost calculator",
+    "real estate development",
+    "premium construction India",
+    "construction packages",
+  ],
+
+  authors: [{ name: "99 Real Estate Group" }],
+  creator: "99 Real Estate Group",
+  publisher: "99 Real Estate Group",
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+  openGraph: {
+    title: "99 Real Estate Group | Premium Construction Services",
+    description:
+      "Transparent construction packages with 10-year structural warranty and smart cost calculator.",
+    url: siteUrl,
+    siteName: "99 Real Estate Group",
+    type: "website",
+    locale: "en_IN",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "99 Real Estate Group",
+    description:
+      "Premium construction services with transparent pricing and structural warranty.",
+  },
+
+  alternates: {
+    canonical: siteUrl,
+  },
+
+  themeColor: "#000000",
 };
 
 /* ================= ROOT LAYOUT ================= */
@@ -35,6 +86,28 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+ <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              name: "99 Real Estate Group",
+              url: siteUrl,
+              logo: `${siteUrl}/logo.svg`,
+              telephone: "+919039037606",
+              address: {
+                "@type": "PostalAddress",
+                addressCountry: "IN",
+              },
+              areaServed: "India",
+              serviceType: "Construction Services",
+            }),
+          }}
+        />
+      </head>
+
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}
       >
@@ -49,11 +122,32 @@ export default function RootLayout({
         {/* FOOTER */}
         <Footer />
 
-        {/* CHATBOT (GLOBAL) */}
+        {/* CHATBOT */}
         <ChatBot />
 
-        {/* EXIT POPUP — MUST BE LAST */}
+        {/* EXIT POPUP */}
         <ExitPopup />
+
+        {/* ================= STRUCTURED DATA ================= */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              name: "99 Real Estate Group",
+              url: siteUrl,
+              logo: `${siteUrl}/logo.svg`,
+              telephone: "+919039037606",
+              address: {
+                "@type": "PostalAddress",
+                addressCountry: "IN",
+              },
+              areaServed: "India",
+              serviceType: "Construction Services",
+            }),
+          }}
+        />
       </body>
     </html>
   );

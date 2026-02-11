@@ -45,7 +45,7 @@ export default function AboutPage() {
             About Our Company
           </p>
 
-          <h1 className="text-5xl font-bold uppercase md:text-6xl">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold uppercase leading-tight">
             Building Trust <br />
             <span className="text-yellow-400">Since 2015</span>
           </h1>
@@ -126,7 +126,7 @@ export default function AboutPage() {
           </motion.div>
 
           <div className="relative">
-            <div className="absolute left-1/2 top-0 h-full w-[2px] -translate-x-1/2 bg-yellow-400" />
+            <div className="hidden md:block absolute left-1/2 top-0 h-full w-[2px] -translate-x-1/2 bg-yellow-400" />
 
             <TimelineItem side="left" year="2015" title="Foundation" text="Company established with a vision to deliver quality-driven construction solutions." />
             <TimelineItem side="right" year="2018" title="First Major Project" text="Successfully delivered large-scale residential developments across the region." />
@@ -175,7 +175,7 @@ export default function AboutPage() {
 
       {/* ================= CTA ================= */}
       <section
-        className="relative bg-cover bg-center py-32"
+        className="relative bg-cover bg-center py-16 md:py-32"
         style={{ backgroundImage: "url('https://images.unsplash.com/photo-1503387762-592deb58ef4e')" }}
       >
         <div className="absolute inset-0 bg-black/70" />
@@ -237,31 +237,32 @@ function TimelineItem({
       viewport={{ once: true }}
       variants={isLeft ? fadeLeft : fadeRight}
       transition={{ duration: 0.6 }}
-      className="relative mb-24 flex w-full"
+      className="relative mb-16 md:mb-24 flex flex-col md:flex-row items-start md:items-center"
     >
-      {isLeft && (
-        <div className="w-1/2 pr-16 text-right">
-          <span className="text-5xl md:text-6xl font-extrabold text-yellow-400">
-            {year}
-          </span>
-          <h4 className="mt-4 text-xl font-bold uppercase">{title}</h4>
-          <p className="mt-3 text-zinc-600 leading-7">{text}</p>
-        </div>
-      )}
+      {/* MOBILE + LEFT SIDE */}
+      <div
+        className={`
+          w-full md:w-1/2
+          ${isLeft ? "md:pr-16 md:text-right" : "md:pl-16 md:ml-auto md:text-left"}
+        `}
+      >
+        <span className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-yellow-400">
+          {year}
+        </span>
 
-      <div className="absolute left-1/2 top-2 -translate-x-1/2">
-        <span className="block h-4 w-4 rounded-full bg-yellow-400"></span>
+        <h4 className="mt-3 text-lg md:text-xl font-bold uppercase">
+          {title}
+        </h4>
+
+        <p className="mt-2 text-zinc-600 leading-relaxed text-sm md:text-base">
+          {text}
+        </p>
       </div>
 
-      {!isLeft && (
-        <div className="ml-auto w-1/2 pl-16 text-left">
-          <span className="text-5xl md:text-6xl font-extrabold text-yellow-400">
-            {year}
-          </span>
-          <h4 className="mt-4 text-xl font-bold uppercase">{title}</h4>
-          <p className="mt-3 text-zinc-600 leading-7">{text}</p>
-        </div>
-      )}
+      {/* CENTER DOT (Desktop Only) */}
+      <div className="hidden md:block absolute left-1/2 top-4 -translate-x-1/2">
+        <span className="block h-4 w-4 rounded-full bg-yellow-400"></span>
+      </div>
     </motion.div>
   );
 }

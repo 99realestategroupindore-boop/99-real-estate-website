@@ -30,7 +30,7 @@ export default function Header() {
             width={150}
             height={60}
             priority
-            className="h-10 w-auto md:h-14"
+            className="h-10 w-auto md:h-24"
           />
         </Link>
 
@@ -97,7 +97,7 @@ export default function Header() {
             <MobileLink href="/process">HOW WE WORK</MobileLink>
             <MobileLink href="/contact">CONTACT</MobileLink>
             <MobileLink href="/about">ABOUT US</MobileLink>
-<MobileLink href="/about">REFER & EARN</MobileLink>
+<MobileLink href="/refer-and-earn">REFER & EARN</MobileLink>
             <MobileLink href="/testimonials">TESTIMONIALS</MobileLink>
             <MobileLink href="/faq">FAQs</MobileLink>
 
