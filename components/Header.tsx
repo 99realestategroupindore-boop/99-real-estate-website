@@ -95,6 +95,8 @@ export default function Header() {
             <MobileLink href="/services">OUR SERVICES</MobileLink>
             <MobileLink href="/packages">PACKAGES</MobileLink>
             <MobileLink href="/process">HOW WE WORK</MobileLink>
+            <MobileLink href="/elevations">OUR DESIGNS</MobileLink>
+            <MobileLink href="/cost-calculator">COST CALCULATOR</MobileLink>
             <MobileLink href="/contact">CONTACT</MobileLink>
             <MobileLink href="/about">ABOUT US</MobileLink>
 <MobileLink href="/refer-and-earn">REFER & EARN</MobileLink>
