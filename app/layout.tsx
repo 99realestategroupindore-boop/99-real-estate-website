@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 import ExitPopup from "@/components/ExitPopup";
@@ -86,7 +87,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
- <head>
+      <head>
+        {/* ================= GOOGLE ANALYTICS ================= */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-1RK8CH5TRT"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-1RK8CH5TRT');
+          `}
+        </Script>
+
+        {/* ================= STRUCTURED DATA (HEAD) ================= */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -115,9 +131,7 @@ export default function RootLayout({
         <Header />
 
         {/* PAGE CONTENT */}
-        <main className="pt-20 md:pt-24">
-          {children}
-        </main>
+        <main className="pt-20 md:pt-24">{children}</main>
 
         {/* FOOTER */}
         <Footer />
@@ -128,7 +142,7 @@ export default function RootLayout({
         {/* EXIT POPUP */}
         <ExitPopup />
 
-        {/* ================= STRUCTURED DATA ================= */}
+        {/* ================= STRUCTURED DATA (BODY - YOUR ORIGINAL KEPT) ================= */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
