@@ -90,7 +90,7 @@ export default function Header() {
       {menuOpen && (
         <div className="fixed inset-0 z-40 bg-black md:hidden flex flex-col">
           <div className="h-20" />
-          <ul className="flex h-[calc(100vh-5rem)] flex-col justify-center gap-6 px-6 text-sm tracking-widest text-white">
+          <ul className="flex h-[calc(100vh-5rem)] flex-col gap-7 px-6 pt-10 pb-24 text-sm tracking-widest text-white overflow-y-auto">
             <MobileLink href="/projects">OUR PROJECTS</MobileLink>
             <MobileLink href="/services">OUR SERVICES</MobileLink>
             <MobileLink href="/packages">PACKAGES</MobileLink>
@@ -105,7 +105,7 @@ export default function Header() {
 
             <Link
               href="/contact"
-              className="mt-8 rounded-md bg-yellow-400 px-6 py-4 text-center font-semibold tracking-wide text-black"
+              className="mt-auto rounded-md bg-yellow-400 px-6 py-4 text-center font-semibold tracking-wide text-black"
             >
               GET QUOTE
             </Link>
