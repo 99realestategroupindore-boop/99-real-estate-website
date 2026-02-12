@@ -1,169 +1,170 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
+import { motion } from "framer-motion";
 
 export default function OfferPage() {
   return (
-    <div className="bg-white text-gray-900">
+    <main className="bg-white overflow-x-hidden">
 
-      {/* ===== HERO ===== */}
-      <section className="relative pb-20 pt-24">
-        <div
-          className="absolute inset-0 bg-center bg-cover opacity-80"
-          style={{ backgroundImage: "url('/offer-hero.jpg')" }}
-        />
-        <div className="absolute inset-0 bg-black/50" />
-
+      {/* ================= HERO ================= */}
+      <section className="bg-black py-16 md:py-28 text-center text-white">
         <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          className="relative z-10 text-center max-w-4xl mx-auto px-6"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-            Join the 99 Reward Program
-          </h1>
-          <p className="mt-4 text-lg text-gray-200">
-            Invest with 99 Real Estate Group and get a chance to receive up to ₹35,00,000 in rewards.
+          <p className="text-xs tracking-[0.35em] uppercase text-zinc-400">
+            Exclusive Limited Offer
           </p>
 
-          <Link
-            href="/contact"
-            className="inline-block mt-8 bg-[#1a73e8] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#1558b0] transition"
-          >
-            Apply Now
-          </Link>
+          <h1 className="mt-6 text-3xl sm:text-4xl md:text-6xl font-extrabold uppercase leading-tight">
+            99 Customers Mega <span className="text-yellow-400">Lucky Draw</span>
+          </h1>
+
+          <div className="mx-auto mt-6 h-[3px] w-16 bg-yellow-400" />
+
+          <p className="mx-auto mt-6 max-w-3xl text-zinc-300 leading-7">
+            Join our exclusive 99-member premium offer and stand a chance
+            to win rewards worth up to ₹35 Lakhs.
+          </p>
         </motion.div>
       </section>
 
-      {/* ===== HOW IT WORKS ===== */}
-      <section className="px-6 py-16">
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          className="max-w-5xl mx-auto text-center"
-        >
-          <h2 className="text-3xl font-semibold mb-8">How It Works</h2>
-          <div className="grid md:grid-cols-4 gap-8">
+      {/* ================= HOW IT WORKS ================= */}
+      <section className="py-16 md:py-24">
+        <div className="mx-auto max-w-6xl px-6">
+
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-extrabold uppercase">
+              How It Works
+            </h2>
+            <div className="mx-auto mt-4 h-[3px] w-16 bg-yellow-400" />
+          </div>
+
+          <div className="mt-14 grid gap-8 md:grid-cols-3">
+
             {[
               {
-                title: "Register",
-                desc: "Pay ₹1,51,000 for construction or property purchase.",
+                step: "01",
+                title: "Book With ₹1,51,000",
+                desc: "Pay ₹1,51,000 towards construction, land purchase, or any real estate investment.",
               },
               {
-                title: "Become One of 99",
-                desc: "Only 99 members are eligible.",
+                step: "02",
+                title: "Complete 99 Members",
+                desc: "Once 99 customers join the offer, lucky draw event will be conducted transparently.",
               },
               {
-                title: "Complete Enrollment",
-                desc: "Once all 99 are registered, the draw will take place.",
+                step: "03",
+                title: "Win Mega Rewards",
+                desc: "1 Grand Winner & 98 Assured Rewards. Everyone benefits.",
               },
-              {
-                title: "Reward Distribution",
-                desc: "1 grand prize + assured rewards.",
-              },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                transition={{ delay: i * 0.2 }}
-                className="border p-5 rounded-lg shadow-sm hover:shadow-md transition"
+            ].map((item) => (
+              <div
+                key={item.step}
+                className="rounded-2xl border p-8 text-center shadow-sm hover:shadow-md transition"
               >
-                <h4 className="text-xl font-semibold text-[#1a73e8] mb-2">
+                <span className="text-yellow-400 font-bold">
+                  STEP {item.step}
+                </span>
+                <h3 className="mt-4 text-xl font-semibold uppercase">
                   {item.title}
-                </h4>
-                <p className="text-gray-700 text-sm">{item.desc}</p>
-              </motion.div>
+                </h3>
+                <p className="mt-4 text-sm text-zinc-600 leading-7">
+                  {item.desc}
+                </p>
+              </div>
             ))}
+
           </div>
-        </motion.div>
-      </section>
-
-      {/* ===== REWARD DETAILS ===== */}
-      <section className="bg-gray-50 px-6 py-16">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h2
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            className="text-3xl font-semibold mb-6"
-          >
-            Grand Reward (1 Winner)
-          </motion.h2>
-
-          <p className="text-gray-800 mb-6">
-            The selected participant will receive up to ₹35,00,000 total reward.
-          </p>
-
-          <ul className="list-disc list-inside text-gray-700 text-base space-y-2">
-            <li>Free construction worth ₹35,00,000</li>
-            <li>Free property worth ₹35,00,000</li>
-            <li>₹35,00,000 adjustment in existing project</li>
-          </ul>
         </div>
       </section>
 
-      {/* ===== ASSURED REWARDS ===== */}
-      <section className="px-6 py-16">
-        <div className="max-w-5xl mx-auto text-center">
-          <motion.h2
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            className="text-3xl font-semibold mb-6"
-          >
-            Assured Rewards (98 Members)
-          </motion.h2>
+      {/* ================= REWARDS ================= */}
+      <section className="bg-zinc-50 py-16 md:py-24">
+        <div className="mx-auto max-w-6xl px-6">
 
-          <p className="text-gray-700 mb-6">
-            Each participant is guaranteed one of these:
-          </p>
-
-          <div className="flex justify-center gap-6 flex-wrap">
-            {["E-Bike", "LED TV", "Water Purifier"].map((reward, i) => (
-              <span
-                key={i}
-                className="bg-gray-100 text-[#1a73e8] px-4 py-2 rounded-md font-medium"
-              >
-                {reward}
-              </span>
-            ))}
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-extrabold uppercase">
+              Rewards Structure
+            </h2>
+            <div className="mx-auto mt-4 h-[3px] w-16 bg-yellow-400" />
           </div>
 
-          <p className="mt-6 text-gray-700 text-sm">
-            The amount paid will be fully adjustable in future services with us.
-          </p>
+          <div className="mt-14 grid gap-8 md:grid-cols-2">
+
+            {/* Grand Winner */}
+            <div className="rounded-2xl border border-yellow-400 p-8 shadow-md">
+              <h3 className="text-2xl font-extrabold uppercase text-yellow-500">
+                1 Grand Winner
+              </h3>
+
+              <ul className="mt-6 space-y-3 text-sm text-zinc-700">
+                <li>✔ Free Construction worth ₹35 Lakhs</li>
+                <li>✔ OR Free Property worth ₹35 Lakhs</li>
+                <li>✔ OR ₹35 Lakhs credit adjustment</li>
+              </ul>
+            </div>
+
+            {/* Assured Rewards */}
+            <div className="rounded-2xl border p-8 shadow-sm">
+              <h3 className="text-2xl font-extrabold uppercase">
+                98 Assured Rewards
+              </h3>
+
+              <ul className="mt-6 space-y-3 text-sm text-zinc-700">
+                <li>✔ E-Bike</li>
+                <li>✔ LED TV</li>
+                <li>✔ Water Purifier</li>
+                <li>✔ OR ₹1,51,000 adjusted in future project</li>
+              </ul>
+            </div>
+
+          </div>
         </div>
       </section>
 
-      {/* ===== CTA ===== */}
-      <section className="bg-[#1a73e8] text-white py-16 text-center">
-        <motion.h3
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          className="text-3xl font-semibold mb-4"
-        >
-          Ready to Reserve Your Slot?
-        </motion.h3>
+      {/* ================= TRANSPARENCY ================= */}
+      <section className="py-16 md:py-24">
+        <div className="mx-auto max-w-5xl px-6 text-center">
+
+          <h2 className="text-3xl font-extrabold uppercase">
+            Transparent & Secure Process
+          </h2>
+
+          <p className="mt-6 text-zinc-600 leading-7">
+            The lucky draw will be conducted only after all 99 confirmed
+            participants complete their booking. The process will be
+            transparent and documented.
+          </p>
+
+          <p className="mt-4 text-zinc-600 leading-7">
+            Booking amount remains fully adjustable towards construction,
+            property purchase, or future project.
+          </p>
+
+        </div>
+      </section>
+
+      {/* ================= CTA ================= */}
+      <section className="bg-black py-16 md:py-24 text-center text-white">
+        <h2 className="text-3xl md:text-4xl font-extrabold uppercase">
+          Limited to 99 Customers Only
+        </h2>
+
+        <p className="mt-4 text-zinc-300">
+          Secure your position before all slots are filled.
+        </p>
 
         <Link
           href="/contact"
-          className="inline-block bg-white text-[#1a73e8] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
+          className="mt-8 inline-block rounded-md bg-yellow-400 px-10 py-4 font-semibold text-black hover:bg-yellow-500 transition"
         >
-          Apply Now
+          BOOK YOUR SLOT NOW
         </Link>
       </section>
 
-    </div>
+    </main>
   );
 }

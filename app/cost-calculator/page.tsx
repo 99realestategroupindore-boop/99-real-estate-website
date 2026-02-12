@@ -127,11 +127,22 @@ export default function CostCalculatorPage() {
                 <label className="block text-sm font-semibold mb-2">
                   Mobile Number *
                 </label>
-                <input
-                  value={mobile}
-                  onChange={(e) => setMobile(e.target.value)}
-                  className="w-full rounded-md border px-4 py-3"
-                />
+<input
+  type="tel"
+  required
+  inputMode="numeric"
+  pattern="[6-9][0-9]{9}"
+  maxLength={10}
+  value={mobile}
+  onChange={(e) => {
+    const value = e.target.value.replace(/\D/g, "");
+    if (value.length <= 10) {
+      setMobile(value);
+    }
+  }}
+  className="w-full rounded-md border px-4 py-3 focus:border-yellow-400 focus:outline-none"
+  placeholder="10 Digit Mobile Number"
+/>
               </div>
 
               {/* AREA */}
@@ -152,8 +163,8 @@ export default function CostCalculatorPage() {
                 <label className="block text-sm font-semibold mb-3">
                   Construction Quality
                 </label>
-                <div className="grid grid-cols-3 gap-4">
-                  {["Standard", "premium", "luxury"].map((q) => (
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  {["standard", "premium", "luxury"].map((q) => (
                     <button
                       key={q}
                       onClick={() => setQuality(q as any)}
@@ -201,7 +212,7 @@ export default function CostCalculatorPage() {
                     <div>
                       <p className="text-sm text-zinc-400">Rate per sq ft</p>
                       <p className="text-2xl font-bold text-yellow-400">
-                        ₹ {rate.toLocaleString()}
+                        ₹ {Number(rate || 0).toLocaleString("en-IN")}
                       </p>
                     </div>
 
@@ -215,7 +226,7 @@ export default function CostCalculatorPage() {
                         transition={{ duration: 0.4 }}
                         className="text-4xl font-extrabold"
                       >
-                        ₹ {totalCost.toLocaleString()}
+                        ₹ {Number(totalCost || 0).toLocaleString("en-IN")}
                       </motion.p>
                     </div>
 
@@ -223,6 +234,7 @@ export default function CostCalculatorPage() {
                       <li>✔ Package: {quality.toUpperCase()}</li>
                       <li>✔ Built-up area: {area} sq ft</li>
                       <li>✔ Location: Indore</li>
+                      <li>✔ GST Excluded in Estimated Cost</li>
                     </ul>
                   </div>
                 </div>
