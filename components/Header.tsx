@@ -88,9 +88,10 @@ export default function Header() {
 
       {/* ================= MOBILE MENU ================= */}
       {menuOpen && (
-        <div className="fixed inset-0 z-40 bg-black md:hidden">
+        <div className="fixed inset-0 z-40 bg-black md:hidden flex flex-col">
           <div className="h-20" />
-          <ul className="flex h-[calc(100vh-5rem)] flex-col justify-center gap-6 px-6 text-sm tracking-widest text-white">
+          <div className="flex-1 overflow-y-auto px-6">
+          <ul className="flex flex-col gap-6 text-sm tracking-widest text-white pb-32">
             <MobileLink href="/projects">OUR PROJECTS</MobileLink>
             <MobileLink href="/services">OUR SERVICES</MobileLink>
             <MobileLink href="/packages">PACKAGES</MobileLink>
@@ -105,7 +106,7 @@ export default function Header() {
 
             <Link
               href="/contact"
-              className="mt-8 rounded-md bg-yellow-400 px-6 py-4 text-center font-semibold tracking-wide text-black"
+              className="block w-full rounded-md bg-yellow-400 py-4 text-center font-semibold tracking-wide text-black"
             >
               GET QUOTE
             </Link>
